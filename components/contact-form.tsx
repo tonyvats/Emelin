@@ -12,10 +12,15 @@ const fieldClass = "h-11 bg-card px-3 text-base md:text-base";
 type ContactFormProps = {
   formatId: FormatId;
   onFormatChange: (id: FormatId) => void;
+  initialDraft?: string | null;
 };
 
-export function ContactForm({ formatId, onFormatChange }: ContactFormProps) {
-  const [draft, setDraft] = useState<string | null>(null);
+export function ContactForm({
+  formatId,
+  onFormatChange,
+  initialDraft = null,
+}: ContactFormProps) {
+  const [draft, setDraft] = useState<string | null>(initialDraft);
   const [copied, setCopied] = useState(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -124,7 +129,7 @@ export function ContactForm({ formatId, onFormatChange }: ContactFormProps) {
           </button>
         </div>
       ) : (
-        <form className="grid gap-4" onSubmit={onSubmit}>
+        <form className="grid gap-4" method="get" action="/#napisat" onSubmit={onSubmit}>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
               <Label htmlFor="name">Имя</Label>

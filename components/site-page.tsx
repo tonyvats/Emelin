@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact-form";
 import {
@@ -51,8 +51,13 @@ function VkLink({
   );
 }
 
-export function SitePage() {
+export function SitePage({ initialDraft = null }: { initialDraft?: string | null }) {
   const [formatId, setFormatId] = useState<FormatId>("svadba");
+
+  useEffect(() => {
+    if (!initialDraft) return;
+    document.getElementById("napisat")?.scrollIntoView();
+  }, [initialDraft]);
 
   return (
     <>
@@ -188,7 +193,11 @@ export function SitePage() {
           className="scroll-mt-24 border-t border-border bg-secondary/50"
         >
           <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
-            <ContactForm formatId={formatId} onFormatChange={setFormatId} />
+            <ContactForm
+              formatId={formatId}
+              onFormatChange={setFormatId}
+              initialDraft={initialDraft}
+            />
           </div>
         </section>
       </main>
