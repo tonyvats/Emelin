@@ -66,7 +66,7 @@ export function ContactForm({
         <p className="text-sm tracking-[0.16em] text-muted-foreground uppercase">
           Написать
         </p>
-        <h2 className="font-display mt-3 text-4xl leading-none text-balance sm:text-5xl">
+        <h2 className="font-display mt-3 text-4xl leading-[0.95] font-bold tracking-[-0.04em] text-balance sm:text-5xl">
           Дата, формат и телефон
         </h2>
         <p className="mt-4 max-w-md text-base leading-relaxed text-pretty">
@@ -81,13 +81,13 @@ export function ContactForm({
       </div>
 
       {draft ? (
-        <div className="rounded-2xl border border-border bg-card p-5 sm:p-6">
+        <div className="border border-white/10 bg-card p-5 sm:p-6">
           <p className="text-base font-medium">
             {copied
               ? "Текст заявки скопирован."
               : "Заявка собрана. Скопируйте текст вручную."}
           </p>
-          <pre className="mt-4 whitespace-pre-wrap rounded-xl bg-muted p-4 font-sans text-sm leading-relaxed">
+          <pre className="mt-4 whitespace-pre-wrap bg-background p-4 font-sans text-sm leading-relaxed">
             {draft}
           </pre>
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
@@ -168,7 +168,7 @@ export function ContactForm({
                 required
                 value={formatId}
                 onChange={(event) => onFormatChange(event.target.value as FormatId)}
-                className="h-11 w-full rounded-lg border border-input bg-card px-3 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                className="h-11 w-full rounded-lg border border-input bg-background px-3 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               >
                 {formats.map((item) => (
                   <option key={item.id} value={item.id}>

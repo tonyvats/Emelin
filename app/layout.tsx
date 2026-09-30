@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cormorant_Garamond, Geist_Mono, Manrope } from "next/font/google";
+import { Geist_Mono, Manrope, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const sans = Manrope({
@@ -9,10 +9,10 @@ const sans = Manrope({
   display: "swap",
 });
 
-const display = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const display = Unbounded({
+  variable: "--font-unbounded",
   subsets: ["cyrillic", "latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "700"],
   display: "swap",
 });
 
