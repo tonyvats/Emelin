@@ -12,7 +12,7 @@ const sans = Manrope({
 const display = Unbounded({
   variable: "--font-unbounded",
   subsets: ["cyrillic", "latin"],
-  weight: ["500", "700"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Сергей Емелин — ведущий",
   description:
-    "Свадьбы, корпоративы, дни рождения, массовые мероприятия и частные квизы. Сергиев Посад и Большое Бетонное Кольцо.",
+    "Ведущий Сергей Емелин: свадьбы, корпоративы, дни рождения, массовые мероприятия и частные квизы. Сергиев Посад и Большое Бетонное Кольцо.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

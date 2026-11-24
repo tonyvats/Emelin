@@ -7,10 +7,12 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-manrope), "Manrope", sans-serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-unbounded), "Unbounded", sans-serif;
   --font-display: var(--font-unbounded), "Unbounded", sans-serif;
+  --color-sand: var(--sand);
+  --color-sand-foreground: var(--sand-foreground);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,9 +52,11 @@
 }
 
 :root {
-  --background: oklch(0.16 0.004 60);
-  --foreground: oklch(0.96 0.005 90);
-  --card: oklch(0.2 0.004 60);
+  --background: oklch(0.165 0.008 60);
+  --foreground: oklch(0.955 0.012 85);
+  --sand: oklch(0.84 0.06 78);
+  --sand-foreground: oklch(0.2 0.01 60);
+  --card: oklch(0.205 0.009 60);
   --card-foreground: oklch(0.96 0.005 90);
   --popover: oklch(0.2 0.004 60);
   --popover-foreground: oklch(0.96 0.005 90);
@@ -130,7 +134,82 @@
     @apply bg-background text-foreground;
   }
   ::selection {
-    background: oklch(0.97 0.004 90);
-    color: oklch(0.16 0.004 60);
+    background: oklch(0.84 0.06 78);
+    color: oklch(0.2 0.01 60);
+  }
+}
+
+@layer components {
+  /* Appearance of blocks on scroll. Only where the browser knows scroll-driven animations. */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+
+  /* Header is transparent over the first screen and becomes solid as the page scrolls. */
+  .site-header {
+    background-color: color-mix(in oklch, var(--background) 85%, transparent);
+    border-color: oklch(1 0 0 / 10%);
+    backdrop-filter: blur(12px);
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-solid linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 320px;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .site-header {
+      animation: none;
+    }
+
+    .site-header {
+      background-color: color-mix(in oklch, var(--background) 85%, transparent);
+      border-color: oklch(1 0 0 / 10%);
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes header-solid {
+  from {
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: color-mix(in oklch, var(--background) 85%, transparent);
+    border-color: oklch(1 0 0 / 10%);
+    backdrop-filter: blur(12px);
   }
 }
