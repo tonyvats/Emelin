@@ -9,76 +9,80 @@ export const headline =
 export const footerNote =
   "Напишите дату и формат, остальное обсудим лично. Работаю в Сергиевом Посаде и по всему Большому Бетонному Кольцу.";
 
+// next/image does not prefix unoptimized files with basePath, so photo URLs
+// need the GitHub Pages prefix baked in. Empty when the site is served from /.
+const photoBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const photos = {
   hero: {
-    src: "/photos/hero.jpg",
+    src: `${photoBase}/photos/hero.jpg`,
     alt: "Сергей Емелин в бежевом пиджаке на летней террасе",
     orientation: "portrait",
     position: "center 15%",
   },
   ceremony: {
-    src: "/photos/ceremony.jpg",
+    src: `${photoBase}/photos/ceremony.jpg`,
     alt: "Сергей Емелин ведёт выездную регистрацию в лесу: гости вдоль белой дорожки, цветы и белая ткань",
     orientation: "portrait",
     position: "center 30%",
   },
   speech: {
-    src: "/photos/speech.jpg",
+    src: `${photoBase}/photos/speech.jpg`,
     alt: "Сергей Емелин в смокинге говорит в микрофон на фоне цветочной стены",
     orientation: "portrait",
     position: "center 20%",
   },
   terrace: {
-    src: "/photos/terrace.jpg",
+    src: `${photoBase}/photos/terrace.jpg`,
     alt: "Сергей Емелин в бежевом пиджаке с микрофоном на открытой террасе",
     orientation: "landscape",
     position: "center 40%",
   },
   bouquet: {
-    src: "/photos/bouquet.jpg",
+    src: `${photoBase}/photos/bouquet.jpg`,
     alt: "Сергей Емелин в белом костюме держит букет розовых бутонов и микрофон",
     orientation: "portrait",
     position: "center 30%",
   },
   river: {
-    src: "/photos/river.jpg",
+    src: `${photoBase}/photos/river.jpg`,
     alt: "Сергей Емелин с микрофоном на катере на Москве-реке, позади памятник Петру I",
     orientation: "portrait",
     position: "center 30%",
   },
   evening: {
-    src: "/photos/evening.jpg",
+    src: `${photoBase}/photos/evening.jpg`,
     alt: "Сергей Емелин в белом костюме на вечернем празднике в зале",
     orientation: "portrait",
     position: "center 30%",
   },
   // Photos below are for the formats list only and do not repeat the rail.
   wedding: {
-    src: "/photos/wedding.jpg",
+    src: `${photoBase}/photos/wedding.jpg`,
     alt: "Сергей Емелин в белом костюме ведёт церемонию у розового подиума с цветами, на переднем плане гостья",
     orientation: "portrait",
     position: "center 28%",
   },
   corporate: {
-    src: "/photos/corporate.jpg",
+    src: `${photoBase}/photos/corporate.jpg`,
     alt: "Сергей Емелин с микрофоном на летней площадке под жёлтыми зонтами среди гостей",
     orientation: "landscape",
     position: "54% center",
   },
   toast: {
-    src: "/photos/toast.jpg",
+    src: `${photoBase}/photos/toast.jpg`,
     alt: "Сергей Емелин в белом костюме поднимает бокал",
     orientation: "portrait",
     position: "center 30%",
   },
   stage: {
-    src: "/photos/stage.jpg",
+    src: `${photoBase}/photos/stage.jpg`,
     alt: "Сергей Емелин с микрофоном на открытой сцене с декорациями и синей машиной",
     orientation: "landscape",
     position: "right center",
   },
   quiz: {
-    src: "/photos/quiz.jpg",
+    src: `${photoBase}/photos/quiz.jpg`,
     alt: "Сергей Емелин в белом костюме с микрофоном, крупный план",
     orientation: "portrait",
     position: "center 26%",
